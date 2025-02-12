@@ -7,16 +7,21 @@ import pandas as pd
 import numpy as np
 
 iris = load_iris()
-X = iris.data  
-y = iris.target  
+X = iris.data
+y = iris.target
 
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-kmeans = KMeans(n_clusters=3, random_state=42)  
-kmeans.fit(X_scaled
+# Initialize and fit KMeans model
+# Assuming you want 3 clusters, change n_clusters if needed
+kmeans = KMeans(n_clusters=3, random_state=0)  
+kmeans.fit(X_scaled)
 
-           plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=labels, cmap='viridis')
+# Get cluster assignments 
+labels = kmeans.labels_  
+
+plt.scatter(X_scaled[:, 0], X_scaled[:, 1], c=labels ,cmap='viridis')
 plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=200, c='red', marker='X', label='Centroids')
 plt.xlabel('Sepal Length (Scaled)')
 plt.ylabel('Sepal Width (Scaled)')
