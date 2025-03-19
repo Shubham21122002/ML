@@ -18,4 +18,4 @@ df_encoded.head()
 from mlxtend.frequent_patterns import apriori
 
 frequent_itemsets = apriori(df_encoded, min_support=0.02, use_colnames=True)
-frequent_itemsets.head(
+frequent_itemsets.head()
